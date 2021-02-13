@@ -33,7 +33,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-      - name: Push to main branch
+      - name: Push
         uses: JamesIves/github-pages-deploy-action@4.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
