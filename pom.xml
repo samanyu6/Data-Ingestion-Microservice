@@ -18,6 +18,10 @@
 		<java.version>11</java.version>
 		<spring-boot.version>2.4.2</spring-boot.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+
+		<sonar.projectKey>samanyu6_Data-Ingestion-Microservice</sonar.projectKey>
+		<sonar.organization>samanyu6</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<dependencyManagement>
