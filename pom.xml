@@ -18,7 +18,7 @@
 	<description>Microservice project</description>
 	<packaging>pom</packaging>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 		<spring-boot.version>2.4.2</spring-boot.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<twitter4j-stream.version>4.0.7</twitter4j-stream.version>
