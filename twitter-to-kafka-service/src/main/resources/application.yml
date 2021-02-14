@@ -1,0 +1,8 @@
+twitter-to-kafka-service:
+  twitter-topics:
+    - java
+    - spring boot
+    - elasticsearch
+    - prometheus
+    - elk
+    - microservices
