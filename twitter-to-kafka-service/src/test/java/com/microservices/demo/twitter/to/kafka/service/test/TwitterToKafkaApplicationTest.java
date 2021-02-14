@@ -6,8 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class TwitterToKafkaApplicationTest {
 
-    @Test
-    public void contextLoad(){
-
-    }
+//    @Test
+//    public void contextLoad(){
+//
+//    }
 }
