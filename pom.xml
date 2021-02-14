@@ -18,9 +18,10 @@
 	<description>Microservice project</description>
 	<packaging>pom</packaging>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 		<spring-boot.version>2.4.2</spring-boot.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+		<maven-compiler-plugin.release>1.8</maven-compiler-plugin.release>
 		<twitter4j-stream.version>4.0.7</twitter4j-stream.version>
 		<lombok.version>1.18.16</lombok.version>
 
@@ -64,9 +65,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
-					<release>${maven-compiler-plugin.version}</release>
+					<release>${maven-compiler-plugin.release}</release>
 				</configuration>
 			</plugin>
 		</plugins>
