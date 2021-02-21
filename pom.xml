@@ -29,6 +29,7 @@
 		<maven-compiler-plugin.release>1.8</maven-compiler-plugin.release>
 		<twitter4j-stream.version>4.0.7</twitter4j-stream.version>
 		<lombok.version>1.18.16</lombok.version>
+		<avro.version>1.10.1</avro.version>
 
 		<sonar.projectKey>samanyu6_Data-Ingestion-Microservice</sonar.projectKey>
 		<sonar.organization>samanyu6</sonar.organization>
@@ -73,6 +74,13 @@
 				<artifactId>spring-boot-configuration-processor</artifactId>
 				<version>${spring-boot.version}</version>
 				<optional>true</optional>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.apache.avro/avro -->
+			<dependency>
+				<groupId>org.apache.avro</groupId>
+				<artifactId>avro</artifactId>
+				<version>${avro.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
