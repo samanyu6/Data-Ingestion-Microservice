@@ -9,6 +9,7 @@
 		<module>kafka/kafka-model</module>
 		<module>kafka/kafka-admin</module>
 		<module>kafka/kafka-producer</module>
+		<module>common-config</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -31,6 +32,8 @@
 		<lombok.version>1.18.16</lombok.version>
 		<avro.version>1.10.1</avro.version>
 		<spring-kafka.version>2.6.6</spring-kafka.version>
+		<spring-retry.version>1.3.1</spring-retry.version>
+		<spring-aop.version>2.4.3</spring-aop.version>
 
 		<sonar.projectKey>samanyu6_Data-Ingestion-Microservice</sonar.projectKey>
 		<sonar.organization>samanyu6</sonar.organization>
@@ -90,6 +93,20 @@
 				<artifactId>spring-kafka</artifactId>
 				<version>${spring-kafka.version}</version>
 			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.springframework.retry/spring-retry -->
+			<dependency>
+				<groupId>org.springframework.retry</groupId>
+				<artifactId>spring-retry</artifactId>
+				<version>${spring-retry.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-aop</artifactId>
+				<version>${spring-aop.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
