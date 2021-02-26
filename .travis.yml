@@ -1,16 +1,16 @@
 dist: xenial
-
 branches:
   only:
-    - develop
+  - develop
 addons:
   sonarcloud:
-    organization: "samanyu6" # the key of the org you chose at step #3
+    organization: samanyu6
     token:
-      secure: "${SONAR_TOKEN}" # encrypted value of your token
+      secure: "${Sonar key}"
 script:
-  # other script steps might be done before running the actual analysis
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=samanyu6_Data-Ingestion-Microservice
-
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=samanyu6_Data-Ingestion-Microservice
 after_success:
-  - sh .travis-git-push.sh
+- sh .travis-git-push.sh
+env:
+  global:
+    secure: ahYghvcjgfaTeSjv9wkEZBtNr05UA/qXCzArECZaOY0FgbJXNga8dt+DPlMB7RCbWIJlJSAsjgwHln0wInbTqxRngSMii5JoPN/7Rhet8ccRglddQQ8qTNGvFUq7TpadklPoC4uTiMOLmUN5EdwB1WaKLBRBwfQHlY70MJoNJCnR6yF70qlrFSuXLCaYgn+bDUhEAsmeCa22iRhLACBquFxgp16yzBmKiNx1QRhSOstUKi3lYR2hWfmW59HGvA9gbo2Xzezah3uZ4StUOK4wlBf786rmYSQT/K5rf5n8YP2HXgu79M/2+bnIwGqWb6xmDuydmWlr/fYiwqbOFZv2GlyML5eX10QJeeJfqfgcZVaenDPt32u84dmBPuO/RhHLcJzCoM6CZJF5cFa6/JMDAolPF4vLblJHQDP6X7WE1kGHCxXMasAVJXsRJUlGJUOn7/gotZL1reILXrUptFDYGZywXLTgXqk7sdeSeuXnlTTtKY2PlVn4zcaEVob4qt8cOViLw1t1ybDHZ/54H67OpOJUunRvu4LIH+KWgzy3Y0/Bh/jHUCkQlpUMGGZ1DHcLoHu2L6JP9UZGZECKrKPk4t7jqCHUah1k+AU16qLDro9M5JdSxa+x6J/h8ZUC2uQUAySievmh4OPZFOvIY4ORyE9HWfHGnVbdT5Oi5zaTw60=
