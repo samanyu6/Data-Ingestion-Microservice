@@ -11,7 +11,7 @@ commit() {
   git commit -m "Travis deploy $TRAVIS_BUILD_NUMBER" -m "[skip ci]"
 }
 
-push() {
+push_code() {
   git remote rm origin
   # Add new "origin" with access token in the git URL for authentication
   git remote add origin https://samanyu6:${DEPLOY_TOKEN}@github.com/samanyu6/Data-Ingestion-Microservice.git > /dev/null 2>&1
@@ -20,4 +20,4 @@ push() {
 
 login
 commit
-push
+push_code
