@@ -6,7 +6,7 @@ login() {
 }
 
 commit() {
-  git checkout master
+  git checkout main
 
   git commit -m "Travis deploy $TRAVIS_BUILD_NUMBER" -m "[skip ci]"
 }
