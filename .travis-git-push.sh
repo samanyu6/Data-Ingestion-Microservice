@@ -6,6 +6,7 @@ login() {
 }
 
 commit() {
+  git fetch https://www.github.com/samanyu6/Data-Ingestion-Microservice.git
   git checkout main
 
   git commit -m "Travis deploy $TRAVIS_BUILD_NUMBER" -m "[skip ci]"
