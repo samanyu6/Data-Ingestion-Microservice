@@ -12,11 +12,11 @@ Event driven microservices for ingesting twitter data, built using Spring Cloud,
 - [x] Retrieve stream of tweets for specific topics.
 - [ ] Stream data from Java to Kafka Topics 
   - [x] Serialize Stream data for Kafka Topics (each twitter stream topic is a Kafka topic).
-  - [] Produce Serialized Stream into Kafka Container.
-- [] Set up Spring Cloud Server Config, convert modules into respective Microservices.
-- []  Write Kafka streams into ElasticSearch and set it up for search.
-  - [] Add Kafka Consumer module.
-  - [] Set up ElasticSearch Container and feed Kafka Consumer Data.
-  - [] Set up ElasticSearch Queries.
+  - [ ] Produce Serialized Stream into Kafka Container.
+- [ ] Set up Spring Cloud Server Config, convert modules into respective Microservices.
+- [ ]  Write Kafka streams into ElasticSearch and set it up for search.
+  - [ ] Add Kafka Consumer module.
+  - [ ] Set up ElasticSearch Container and feed Kafka Consumer Data.
+  - [ ] Set up ElasticSearch Queries.
 
 Based on the brilliant [course](https://www.udemy.com/course/event-driven-microservices-spring-boot-kafka-and-elasticsearch/) by Ali Gelenler, do check it out!
