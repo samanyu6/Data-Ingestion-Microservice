@@ -7,8 +7,16 @@ Event driven microservices for ingesting twitter data, built using Spring Cloud,
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=samanyu6_Data-Ingestion-Microservice&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=samanyu6_Data-Ingestion-Microservice)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=samanyu6_Data-Ingestion-Microservice&metric=security_rating)](https://sonarcloud.io/dashboard?id=samanyu6_Data-Ingestion-Microservice)
 
-Idea is to build a production ready microservices based data pipeline using Industry standard best practises and CNCF projects.
+# TO DO:
 
-Using this project to get an idea of a fully fledged microservices project, will also implement this in Golang in the future cause why not?
+- [x] Retrieve stream of tweets for specific topics.
+- [ ] Stream data from Java to Kafka Topics 
+  - [x] Serialize Stream data for Kafka Topics (each twitter stream topic is a Kafka topic).
+  - [ ] Produce Serialized Stream into Kafka Container.
+- [ ] Set up Spring Cloud Server Config, convert modules into respective Microservices.
+- [ ]  Write Kafka streams into ElasticSearch and set it up for search.
+  - [ ] Add Kafka Consumer module.
+  - [ ] Set up ElasticSearch Container and feed Kafka Consumer Data.
+  - [ ] Set up ElasticSearch Queries.
 
 Based on the brilliant [course](https://www.udemy.com/course/event-driven-microservices-spring-boot-kafka-and-elasticsearch/) by Ali Gelenler, do check it out!
