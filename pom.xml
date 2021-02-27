@@ -36,11 +36,19 @@
 		<spring-aop.version>2.4.3</spring-aop.version>
 		<spring-webflux.version>2.4.3</spring-webflux.version>
 		<reactor.version>3.4.3</reactor.version>
+		<kafka-avro-serialize.version>6.1.0</kafka-avro-serialize.version>
 
 		<sonar.projectKey>samanyu6_Data-Ingestion-Microservice-${project.groupId}:${project.artifactId}</sonar.projectKey>
 		<sonar.organization>samanyu6</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>confluent</id>
+			<url>https://packages.confluent.io/maven/</url>
+		</repository>
+	</repositories>
 
 	<dependencyManagement>
 		<dependencies>
@@ -119,6 +127,39 @@
 				<groupId>io.projectreactor</groupId>
 				<artifactId>reactor-core</artifactId>
 				<version>${reactor.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.microservices.demo</groupId>
+				<artifactId>kafka-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.confluent</groupId>
+				<artifactId>kafka-avro-serializer</artifactId>
+				<version>${kafka-avro-serialize.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-log4j</artifactId>
+					</exclusion>
+
+					<exclusion>
+						<groupId>io.swagger</groupId>
+						<artifactId>swagger-annotations</artifactId>
+					</exclusion>
+
+					<exclusion>
+						<groupId>swagger</groupId>
+						<artifactId>swagger-core</artifactId>
+					</exclusion>
+
+					<exclusion>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 
 		</dependencies>
