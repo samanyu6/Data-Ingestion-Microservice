@@ -16,7 +16,6 @@ import org.springframework.retry.support.RetryTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 
@@ -29,15 +28,13 @@ import java.util.stream.Collectors;
 public class KafkaAdminClient {
     private static final Logger LOG = LoggerFactory.getLogger(KafkaAdminClient.class);
     private final KafkaConfigData kafkaConfigData;
-    private final KafkaAdminClient kafkaAdminClient;
     private final RetryConfigData retryConfigData;
     private final RetryTemplate retryTemplate;
     private final AdminClient adminClient;
     private final WebClient webClient;
 
-    public KafkaAdminClient(KafkaConfigData kafkaConfigData, KafkaAdminClient kafkaAdminClient, RetryConfigData retryConfigData, RetryTemplate retryTemplate, AdminClient adminClient, WebClient webClient) {
+    public KafkaAdminClient(KafkaConfigData kafkaConfigData, RetryConfigData retryConfigData, RetryTemplate retryTemplate, AdminClient adminClient, WebClient webClient) {
         this.kafkaConfigData = kafkaConfigData;
-        this.kafkaAdminClient = kafkaAdminClient;
         this.retryConfigData = retryConfigData;
         this.retryTemplate = retryTemplate;
         this.adminClient = adminClient;
@@ -89,14 +86,12 @@ public class KafkaAdminClient {
 
     private HttpStatus getSchemaRegistryStatus(){
         try{
-            Mono<ClientResponse> clientResponseMono =  webClient
+            return webClient
                     .method(HttpMethod.GET)
                     .uri(kafkaConfigData.getSchemaRegistryUrl())
-                    .exchangeToMono(clientResponse -> {
-                        return clientResponse.bodyToMono(ClientResponse.class);
-                    });
-
-            return clientResponseMono.map(ClientResponse::statusCode).block();
+                    .exchange()
+                    .map(ClientResponse::statusCode)
+                    .block();
 
         } catch (Exception e) {
             return HttpStatus.SERVICE_UNAVAILABLE;
@@ -153,5 +148,5 @@ public class KafkaAdminClient {
         }
 
         return topics;
-    };
+    }
 }
