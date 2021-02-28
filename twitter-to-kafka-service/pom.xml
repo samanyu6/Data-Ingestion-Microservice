@@ -38,6 +38,21 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>com.microservices.demo</groupId>
+            <artifactId>kafka-model</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.microservices.demo</groupId>
+            <artifactId>kafka-admin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.microservices.demo</groupId>
+            <artifactId>kafka-producer</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
