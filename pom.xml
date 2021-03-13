@@ -10,6 +10,7 @@
 		<module>kafka/kafka-admin</module>
 		<module>kafka/kafka-producer</module>
 		<module>common-config</module>
+		<module>config-server</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -37,6 +38,8 @@
 		<spring-webflux.version>2.4.3</spring-webflux.version>
 		<reactor.version>3.4.3</reactor.version>
 		<kafka-avro-serialize.version>6.1.0</kafka-avro-serialize.version>
+		<spring-cloud.version>2.2.6.RELEASE</spring-cloud.version>
+		<spring-cloud-dependencies.version>Hoxton.SR9</spring-cloud-dependencies.version>
 
 		<sonar.projectKey>samanyu6_Data-Ingestion-Microservice-${project.groupId}:${project.artifactId}</sonar.projectKey>
 		<sonar.organization>samanyu6</sonar.organization>
@@ -197,6 +200,21 @@
 				<artifactId>common-config</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-config-server</artifactId>
+				<version>${spring-cloud.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud-dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

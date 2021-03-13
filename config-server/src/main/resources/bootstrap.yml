@@ -1,0 +1,12 @@
+#config setting in bootstrap phase, which has greater priority than application yml.
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          # not creating a git repo, but it's always better to have a git repo for this config
+          url: file:\\C:\Users\Samanyu\Developer\microservices-demo\Data-Ingestion-Microservice\config-server
+          clone-on-start: true
+    fail-fast: true
