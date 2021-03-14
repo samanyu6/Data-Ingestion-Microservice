@@ -7,6 +7,6 @@ spring:
       server:
         git:
           # not creating a git repo, but it's always better to have a git repo for this config
-          url: file:\\C:\Users\Samanyu\Developer\microservices-demo\Data-Ingestion-Microservice\config-server
+          uri: https://github.com/samanyu6/DataIngestion-Config.git
           clone-on-start: true
     fail-fast: true
