@@ -6,7 +6,11 @@ spring:
     config:
       server:
         git:
-          # not creating a git repo, but it's always better to have a git repo for this config
           uri: https://github.com/samanyu6/DataIngestion-Config.git
           clone-on-start: true
     fail-fast: true
+
+  security:
+    user:
+      name: spring-config-user
+      password: springConfigPass?

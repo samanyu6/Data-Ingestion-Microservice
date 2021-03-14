@@ -34,12 +34,12 @@
 #  linger-ms: 5  #delay before sending records to kafka
 #  request-timeout-ms: 60000
 #  retry-count: 10
-spring:
-  application:
-    name: twitter-to-kafka-service
-  profiles:
-    active: twitter_to_kafka
-  cloud:
-    config:
-      name: twitter-to-kafka-service,config-client
-      uri: http://localhost:8888
+#spring:
+#  application:
+#    name: twitter-to-kafka-service
+#  profiles:
+#    active: twitter_to_kafka
+#  cloud:
+#    config:
+#      name: twitter-to-kafka-service,config-client
+#      uri: http://localhost:8888
