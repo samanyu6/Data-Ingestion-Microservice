@@ -1,0 +1,34 @@
+server:
+  port: 8182
+
+retry-config:
+  initial-interval-ms: 1000
+  max-interval-ms: 10000
+  multiplier: 2.0
+  max-attempts: 10
+  sleep-time-ms: 2000
+
+key-deserializer: org.apache.kafka.common.serialization.LongDeserializer
+  value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+  consumer-group-id: twitter-topic-consumer #maintains offset for the particular groupid
+  auto-offset-reset: earliest #we want to start reading from beginning
+  specific-avro-reader-key: specific.avro.reader
+  specific-avro-reader: true
+  batch-listener: true
+  auto-startup: false #not reading topics that are already read
+  concurrency-level: 3 #concurrent operation of topics, = to no. of topics, and each topic = 1 process
+  session-timeout-ms: 10000
+  heartbeat-interval-ms: 3000
+  max-poll-interval-ms: 300000
+  max-poll-records: 500
+  max-partition-fetch-bytes-default: 1048576
+  max-partition-fetch-bytes-boost-factor: 1
+  poll-timeout-ms: 150
+
+kafka-config:
+  bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
+  schema-registry-url-key: schema.registry.url
+  schema-registry-url: http://localhost:8081
+  topic-name: twitter-topic
+  topic-names-to-create:
+    - twitter-topic
