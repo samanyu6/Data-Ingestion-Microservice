@@ -6,8 +6,9 @@ services:
       - "5005:5005"
     volumes:
       - "./docker-logs:/workspace/twitter-to-kafka-service/logs"
+      - "./check-config-up.sh:/workspace/check-config-up.sh"
     user: root
-    entrypoint: ["check-config-up.sh"]
+    entrypoint: ["bash","check-config-up.sh"]
     environment:
       - "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xms128m -Xmx256m"
       - "LOGGING_LEVEL_COM_MICROSERVICES_DEMO=info"
@@ -23,6 +24,7 @@ services:
     image: ${GROUP_ID}/config.server.service:${SERVICE_VERSION:-latest}
     ports:
       - "5006:5006"
+      - "8888:8888"
     volumes:
       - "./docker-logs:/workspace/config-server/logs"
     environment:

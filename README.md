@@ -18,5 +18,27 @@ Event driven microservices for ingesting twitter data, built using Spring Cloud,
   - [x] Add Kafka Consumer module.
   - [ ] Set up ElasticSearch Container and feed Kafka Consumer Data.
   - [ ] Set up ElasticSearch Queries.
+ 
+# SETUP:
+- Add your twitter developer API keys in the twitter-to-kafka-service module under ```src/main/resources/``` with a file named ```twitter4j.properties```.
+   The file would have the following attributes:
+   ```.env
+    debug=true
+    oauth.consumerKey="YOUR_CONSUMER_KEY"
+    oauth.consumerSecret="YOUR_CONSUMER_SECRET"
+    oauth.accessToken="YOUR_ACCESS_TOKEN"
+    oauth.accessTokenSecret="YOUR_ACCESS_TOKEN_SECRET"
+   ```
+  
+- ### Running setup in docker:
+  - ```shell script
+    mvn clean install
+    ```
+  - ```shell script
+    cd docker-compose/
+    docker-compose up
+    ``` 
+# Note:
+1. Shell scripts for docker ***have*** to be in the Unix LF format.
 
 Based on the brilliant [course](https://www.udemy.com/course/event-driven-microservices-spring-boot-kafka-and-elasticsearch/) by Ali Gelenler, do check it out!
