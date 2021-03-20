@@ -6,7 +6,7 @@ services:
       - "5005:5005"
     volumes:
       - "./docker-logs:/workspace/twitter-to-kafka-service/logs"
-      - "./check-config-up.sh:/workspace/check-config-up.sh"
+      - "./check-config-up.sh:/check-config-up.sh"
     user: root
     entrypoint: ["bash","check-config-up.sh"]
     environment:
