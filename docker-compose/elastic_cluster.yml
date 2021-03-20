@@ -1,0 +1,64 @@
+version: '3.7'
+services:
+  elastic-1:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-latest}
+    hostname: elastic-1
+    environment:
+      - node.name=elastic-1
+      - cluster.name=es-twitter-cluster
+      - discovery.seed_hosts=elastic-2,elastic-3  #discover other elastic nodes.
+      - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3 #make any one of the nodes eligible to be master node.
+      - bootstrap.memory_lock=true #prevents swapping of unused memory in jvm. gc will take forever if this is disabled.
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:   #permission to lock down a volume of memory for storing elastic search data, refer #2
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - ${GLOBAL_NETWORK:-elastic}
+  elastic-2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+    environment:
+      - node.name=elastic-2
+      - cluster.name=es-twitter-cluster
+      - discovery.seed_hosts=elastic-1,elastic-3
+      - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" #min and max memory stored is 512Mb
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes: #store data in this location
+      - data02: D:\ElasticSearch
+    networks:
+      - ${GLOBAL_NETWORK:-elastic}
+  elastic-3:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+    environment:
+      - node.name=elastic-3
+      - cluster.name=es-twitter-cluster
+      - discovery.seed_hosts=elastic-1,elastic-2
+      - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data03:/usr/share/elasticsearch/data
+    networks:
+      - ${GLOBAL_NETWORK:-elastic}
+
+volumes:
+  data01: #2 persist data locally
+    driver: local
+  data02:
+    driver: local
+  data03:
+    driver: local
