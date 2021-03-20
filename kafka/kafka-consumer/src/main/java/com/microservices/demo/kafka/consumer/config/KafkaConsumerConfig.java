@@ -1,7 +1,7 @@
 package com.microservices.demo.kafka.consumer.config;
 
 import com.microservices.demo.config.KafkaConfigData;
-import com.microservices.demo.config.kafkaConsumerConfigData;
+import com.microservices.demo.config.KafkaConsumerConfigData;
 import org.apache.avro.specific.SpecificRecordBase;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.springframework.context.annotation.Bean;
@@ -22,9 +22,9 @@ import java.util.Map;
 public class KafkaConsumerConfig<K extends Serializable, V extends SpecificRecordBase> {
 
     private final KafkaConfigData kafkaConfigData;
-    private final kafkaConsumerConfigData kafkaConsumerConfigData;
+    private final KafkaConsumerConfigData kafkaConsumerConfigData;
 
-    public KafkaConsumerConfig(KafkaConfigData kafkaConfigData, com.microservices.demo.config.kafkaConsumerConfigData kafkaConsumerConfigData) {
+    public KafkaConsumerConfig(KafkaConfigData kafkaConfigData, com.microservices.demo.config.KafkaConsumerConfigData kafkaConsumerConfigData) {
         this.kafkaConfigData = kafkaConfigData;
         this.kafkaConsumerConfigData = kafkaConsumerConfigData;
     }
@@ -36,6 +36,7 @@ public class KafkaConsumerConfig<K extends Serializable, V extends SpecificRecor
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, kafkaConsumerConfigData.getKeyDeserializer());
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, kafkaConsumerConfigData.getValueDeserializer());
         props.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaConsumerConfigData.getConsumerGroupId());
+        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, kafkaConsumerConfigData.getAutoOffsetReset());
         props.put(kafkaConfigData.getSchemaRegistryUrlKey(), kafkaConfigData.getSchemaRegistryUrl());
         props.put(kafkaConsumerConfigData.getSpecificAvroReaderKey(), kafkaConsumerConfigData.getSpecificAvroReader());
         props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, kafkaConsumerConfigData.getSessionTimeoutMs());
