@@ -9,13 +9,16 @@ services:
       - discovery.seed_hosts=elastic-2,elastic-3  #discover other elastic nodes.
       - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3 #make any one of the nodes eligible to be master node.
       - bootstrap.memory_lock=true #prevents swapping of unused memory in jvm. gc will take forever if this is disabled.
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
     ulimits:   #permission to lock down a volume of memory for storing elastic search data, refer #2
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - data01:/usr/share/elasticsearch/data
+      - data01:/mnt/d/ElasticSearch
+#      - type: volume
+#        source: data01
+#        target: D:/ElasticSearch
     ports:
       - 9200:9200
     networks:
@@ -28,13 +31,16 @@ services:
       - discovery.seed_hosts=elastic-1,elastic-3
       - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" #min and max memory stored is 512Mb
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m" #min and max memory stored is 512Mb
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes: #store data in this location
-      - data02: D:\ElasticSearch
+      - data02:/mnt/d/ElasticSearch
+#      - type: volume
+#        source: data02
+#        target: D:/ElasticSearch
     networks:
       - ${GLOBAL_NETWORK:-elastic}
   elastic-3:
@@ -45,13 +51,16 @@ services:
       - discovery.seed_hosts=elastic-1,elastic-2
       - cluster.initial_master_nodes=elastic-1,elastic-2,elastic-3
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - data03:/usr/share/elasticsearch/data
+      - data03:/mnt/d/ElasticSearch
+#      - type: volume
+#        source: data03
+#        target: D:/ElasticSearch
     networks:
       - ${GLOBAL_NETWORK:-elastic}
 

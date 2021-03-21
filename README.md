@@ -16,7 +16,8 @@ Event driven microservices for ingesting twitter data, built using Spring Cloud,
 - [x] Set up Spring Cloud Server Config.
 - [ ]  Write Kafka streams into ElasticSearch and set it up for search.
   - [x] Add Kafka Consumer module.
-  - [ ] Set up ElasticSearch Container and feed Kafka Consumer Data.
+  - [x] Set up ElasticSearch Container
+  - [ ] Feed consumed data into Elastic Search.
   - [ ] Set up ElasticSearch Queries.
  
 # SETUP:
@@ -40,5 +41,10 @@ Event driven microservices for ingesting twitter data, built using Spring Cloud,
     ``` 
 # Note:
 1. Shell scripts for docker ***have*** to be in the Unix LF format.
+2. Mount volumes should be defined by you in the elastic_cluster.yml file. 
+3. Incase elastic search crashes, increase the virtual memory by using the following command :
+    ```shell script
+    sysctl -w vm.max_map_count=262144
+    ```
 
 Based on the brilliant [course](https://www.udemy.com/course/event-driven-microservices-spring-boot-kafka-and-elasticsearch/) by Ali Gelenler, do check it out!
