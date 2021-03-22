@@ -13,6 +13,10 @@
 		<module>config-server</module>
 		<module>kafka/kafka-consumer</module>
 		<module>kafka-to-elastic-service</module>
+        <module>elastic</module>
+		<module>elastic/elastic-config</module>
+		<module>elastic/elastic-index-client</module>
+		<module>elastic/elastic-model</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -43,6 +47,8 @@
 		<spring-cloud.version>3.0.2</spring-cloud.version>
 		<spring-cloud-dependencies.version>2020.0.1</spring-cloud-dependencies.version>
 		<spring-cloud-bootstrap.version>3.0.1</spring-cloud-bootstrap.version>
+		<spring-elastic-search.version>2.4.4</spring-elastic-search.version>
+		<elasticsearch-server.version>7.11.2</elasticsearch-server.version>
 
 		<sonar.projectKey>samanyu6_Data-Ingestion-Microservice-${project.groupId}:${project.artifactId}</sonar.projectKey>
 		<sonar.organization>samanyu6</sonar.organization>
@@ -241,6 +247,23 @@
 				<version>${spring-boot.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+				<version>${spring-boot.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.elasticsearch</groupId>
+				<artifactId>elasticsearch</artifactId>
+				<version>${elasticsearch-server.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.elasticsearch.client</groupId>
+				<artifactId>elasticsearch-rest-high-level-client</artifactId>
+				<version>${elasticsearch-server.version}</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
