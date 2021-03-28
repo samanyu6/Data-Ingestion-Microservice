@@ -42,9 +42,9 @@ Event driven microservices for ingesting twitter data, built using Spring Cloud,
 # Note:
 1. Shell scripts for docker ***have*** to be in the Unix LF format.
 2. Mount volumes should be defined by you in the elastic_cluster.yml file. 
-3. Incase elastic search crashes, increase the virtual memory by using the following command :
+3. If the elastic search docker images crash, increase the virtual memory by using the following command (WSL/UNIX) :
     ```shell script
-    sysctl -w vm.max_map_count=262144
+    sudo sysctl -w vm.max_map_count=262144
     ```
-
+    
 Based on the brilliant [course](https://www.udemy.com/course/event-driven-microservices-spring-boot-kafka-and-elasticsearch/) by Ali Gelenler, do check it out!
