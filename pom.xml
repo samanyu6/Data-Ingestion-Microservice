@@ -142,12 +142,6 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.microservices.demo</groupId>
-				<artifactId>kafka-model</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-
-			<dependency>
 				<groupId>io.confluent</groupId>
 				<artifactId>kafka-avro-serializer</artifactId>
 				<version>${kafka-avro-serialize.version}</version>
@@ -174,22 +168,20 @@
 				</exclusions>
 			</dependency>
 
-			<dependency>
-				<groupId>com.microservices.demo</groupId>
-				<artifactId>kafka-admin</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-
 
 			<dependency>
 				<groupId>com.microservices.demo</groupId>
 				<artifactId>elastic-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>com.microservices.demo</groupId>
-				<artifactId>kafka-producer</artifactId>
+				<artifactId>elastic-config</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.microservices.demo</groupId>
+				<artifactId>elastic-index-client</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 

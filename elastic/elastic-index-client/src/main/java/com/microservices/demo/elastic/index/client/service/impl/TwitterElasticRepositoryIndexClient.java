@@ -24,6 +24,7 @@ public class TwitterElasticRepositoryIndexClient implements ElasticIndexClient<T
         this.twitterElasticSearchIndexRepository = twitterElasticSearchIndexRepository;
     }
 
+
     @Override
     public List<String> save(List<TwitterIndexModel> documents) {
        List<TwitterIndexModel> repositoryResponse = (List<TwitterIndexModel>) twitterElasticSearchIndexRepository.saveAll(documents);
