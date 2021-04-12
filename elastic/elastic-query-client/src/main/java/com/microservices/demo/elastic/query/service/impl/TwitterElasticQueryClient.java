@@ -10,11 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHit;
+import org.springframework.data.elasticsearch.core.SearchHits;
 import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
 import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TwitterElasticQueryClient implements ElasticQueryClient<TwitterIndexModel> {
@@ -46,14 +48,21 @@ public class TwitterElasticQueryClient implements ElasticQueryClient<TwitterInde
         return searchResult.getContent();
     }
 
+    private List<TwitterIndexModel> search(Query query, String msg, Object... text) {
+        SearchHits<TwitterIndexModel> result = elasticsearchOperations.search(query, TwitterIndexModel.class, IndexCoordinates.of(elasticConfigData.getIndexName()));
+        LOG.info(msg, result.getTotalHits(), text);
+        return result.get().map(SearchHit::getContent).collect(Collectors.toList());
+    }
+
     @Override
     public List<TwitterIndexModel> getIndexModelByText(String text) {
         Query query = elasticQueryUtil.getSearchQueryByFieldText(elasticQueryConfigData.getTextField(), text);
-
+        return search(query, "{} of docs with text {} retreived successfully", text);
     }
 
     @Override
     public List<TwitterIndexModel> getAllIndexModels() {
-        return null;
+        Query query = elasticQueryUtil.getSearchQueryForAll();
+        return search(query, "{} of docs gotten succesfully");
     }
 }
