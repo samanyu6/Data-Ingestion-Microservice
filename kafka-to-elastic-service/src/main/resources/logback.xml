@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <configuration>
+
+    <property value="./kafka-to-elastic-service/logs" name="DEV_HOME"/>
+
+    <property value="kafka-to-elastic-service" name="APP_NAME"/>
+
+    <include resource="logback-common.xml"/>
+
+</configuration>

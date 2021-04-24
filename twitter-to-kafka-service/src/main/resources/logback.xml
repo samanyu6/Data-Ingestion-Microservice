@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <configuration>
+
+    <property value="./twitter-to-kafka-service/logs" name="DEV_HOME"/>
+
+    <property value="twitter-to-kafka-service" name="APP_NAME"/>
+
+    <include resource="logback-common.xml"/>
+
+</configuration>
